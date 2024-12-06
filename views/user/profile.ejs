@@ -1,0 +1,138 @@
+
+<%- include('../partials/header.ejs')%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 pt-20">
+        <div id="content">
+            <h3 class="dis-in-bl">My reviews</h3>
+        </div>
+        <% if(reviews.length>0){ %>
+        <table class="table table-bordered table-striped">
+            <tr>
+              <th>Review</th>
+              <th>Release</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            <% reviews.forEach(review => { %>
+            <tr>
+                <td><a style="color: black !important" href="/reviews/<%= review.id %>"><%= review.movie_name %></a></td>
+                
+                <td><%= review.release %></td>
+                <td><%= review.status%></td>
+                <% if(review.status=="Offer pending"){ %>
+                    <td><form class="ml-10">
+                      <button type="submit" class="btn btn-success" formmethod="GET"
+                          formaction="/reviews/<%= review.id %>/edit">Edit</button>
+                      <button type="submit" class="btn btn-danger" formmethod="POST"
+                          formaction="/reviews/<%= review.id %>?_method=DELETE">Delete</button>
+                        <button class="btn btn-success" formaction="/reviews/<%= review.id%>/manage" formmethod="get" type="submit">Open</button>
+                      </form></td>
+                <%  }else{%>
+                    <td>
+                      <% if(review.status=="Available" || review.status=="Traded"){ %>
+                        <form class="ml-10">
+                          <button type="submit" class="btn btn-success" formmethod="GET"
+                              formaction="/reviews/<%= review.id %>/edit">Edit</button>
+                          <button type="submit" class="btn btn-danger" formmethod="POST"
+                              formaction="/reviews/<%= review.id %>?_method=DELETE">Delete</button>
+                           </form> 
+                           <%  }else{%>
+
+                        <span>Traded</span>
+                        <%  }%>
+
+                    </td>
+                <%  }%>
+                
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%; color: black;">There are no review to display.</p>
+        <% } %> 
+       
+        <div id="content">
+          <h3 class="dis-in-bl">My Wish List</h3>
+      </div>
+<%if(saves.length){%> <%let names = new Array();%> <%saves.forEach(save=>{%>
+<%names.push(save.Name);%> <%});%> 
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Release</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <%saved.forEach(item=>{%>
+    <%if(names.includes(item.movie_name)){%>
+  <tr>
+    <td>
+      <a style="color: black !important;" href="/reviews/<%= item.id%>"><%= item.movie_name%></a>
+    </td>
+    <td><%= item.release%></td>
+    <td><%= item.status%></td>
+    <td>
+      <form
+        >
+        <button type="submit" formaction="/reviews/<%= item.id%>/savedelete?_method=delete"
+            formmethod="post" class="btn btn-danger">UnWatch</button>
+      </form>
+    </td>
+  </tr>
+  <%}%> <%})%> 
+</table>
+<%}else{%>
+
+<p style="margin: 20px auto;width: 95%; color: black;">No reviews in your wishlist</p>
+<%};%>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="content">
+  <h3 class="dis-in-bl">My Offers</h3>
+</div>  <%if(offers.length){%> <%let names = new Array();%>
+  <%offers.forEach(offer=>{%> <%names.push(offer.Name);%> <%});%>
+  
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Release</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    <%offered.forEach(item=>{%> <%if(names.includes(item.movie_name)){%>
+    <tr>
+      <td>
+        <a style="color:black !important" href="/reviews/<%= item.id%>"><%= item.movie_name%></a>
+      </td>
+      <td><%= item.release%></td>
+      <td><%= item.status%></td>
+      <td>
+        <form>
+          <button formaction="/reviews/<%= item.id%>/offerdelete?_method=delete"
+            formmethod="post" type="submit" class="btn btn-danger">Cancel Offer</button>
+        </form>
+      </td>
+    </tr>
+    <%}%> <%})%>
+  </table>
+
+   <%}else{%>
+  <p style="margin: 20px auto;width: 95%; color: black;">No offers found</p>
+  <%};%>
+
+    </div>
+</div>
+</div>
+<%- include('../partials/footer.ejs')%>

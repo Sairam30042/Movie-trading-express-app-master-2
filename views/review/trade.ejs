@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+<div class="container-fluid h-75">
+  <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4 pt-50">
+          <div id="content">
+              <div>
+    <h2>Select a Review</h2>
+    <%if(reviews.length){%>
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Release</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <%reviews.forEach(review=>{%>
+      <tr>
+        <td>
+          <a style="color:black !important" href="/reviews/<%= review.id%>"> <span><%= review.movie_name%></span> </a>
+        </td>
+        <td><%= review.release%></td>
+        <td><%= review.status%></td>
+        <%if(review.status==="Available"){%>
+        <td>
+          <form >
+            <button formaction="/reviews/<%= review.id%>/tradeitem" formmethod="get" type="submit" class="btn btn-success">Trade</button>
+          </form>
+        </td>
+        <%}%>
+      </tr>
+      <br />
+      <%});%>
+    </table>
+    <br />
+  
+    <%}else{%>
+  
+    <p style="color:black !important">Please own atleast one review to participate in this trade.</p>
+    <%};%>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+
+<%- include('../partials/footer.ejs') %>
+

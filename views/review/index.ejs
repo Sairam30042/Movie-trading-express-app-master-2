@@ -1,0 +1,73 @@
+<%- include('../partials/header.ejs')%>
+   <div class="container-fluid ov-y h-75">
+      <div class="row">
+         <div class="im-ch">
+            <img src="../images/index.png" alt="" width="400" height="400">
+         </div>
+         <div class="col-md-10 ml-200">
+            <div id="content" class="trades">
+               <%if(reviews.length !=0) {%>
+                  <div id="indi">
+                     <div id="one">
+                        <h3 class="new-ch">New Movies</h3>
+                        <div class="fl">
+                           <%reviews.forEach(review=>{%>
+                              <%if(review.release==="new") {%>
+                              <div class="gallery">
+                                 <a href="/reviews/<%= review.id%>">
+                                    <img
+                                       src="../images/lord-of-the-flies-alternative-movie-poster-movie-poster-boy.jpeg"
+                                       alt="Cinque Terre" width="600" height="400">
+                                 </a>
+                                 <div class="desc">
+                                    <h4 class="old-ch">
+                                       <%= review.movie_name%>
+                                    </h4>
+                                 </div>
+                              </div>
+                              <%} else {%>
+                                 <span></span>
+                                 <%}%>
+                              <% })%>
+                        </div>
+
+                     </div>
+                     <br>
+                     <br>
+                     <div id="one">
+                        <h3 class="old-ch">Old Movies</h3>
+                        <div class="fl">
+                           <%reviews.forEach(review=>{%>
+                              <%if(review.release==="old") {%>
+                              <div class="gallery">
+                                 <a href="/reviews/<%= review.id%>">
+                                    <img
+                                       src="../images/lord-of-the-flies-alternative-movie-poster-movie-poster-boy.jpeg"
+                                       alt="Cinque Terre" width="600" height="400">
+                                 </a>
+                                 <div class="desc">
+                                    <h4 class="old-ch">
+                                       <%= review.movie_name%>
+                                    </h4>
+                                 </div>
+                              </div>
+                              <%} else {%>
+                                 <span></span>
+                                 <%}%>
+                              <% })%>
+                        </div>
+
+                     </div>
+                  </div>
+                  <%} else {%>
+                     <p style="color:black">There are no Movies to view.</p>
+                     <%}%>
+
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+
+   <%- include('../partials/footer.ejs')%>

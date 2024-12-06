@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs')%>
+<div class="container-fluid h-75">
+  <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4 pt-50">
+          <div id="content">
+              <div>
+<h3>Manage</h3>
+<table class="table table-bordered table-striped">
+    <tr>
+      <th>Your Review</th>
+      <th>Their Review</th>
+    </tr>
+    <tr>
+      <td> <a style="color:black !important" href="/reviews/<%= review.id%>"> <%= review.movie_name%></a> </td>
+      <td> <a style="color:black !important" href="#"> <%= review.offerName%></td> </a>
+    </tr>
+  </table>
+  <div>
+    <form >
+    <button class="btn btn-danger" formaction='/reviews/<%= review.id%>/manageofferdelete?_method=delete' formmethod="Post" type="submit">Cancel</button>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<%- include('../partials/footer.ejs')%>

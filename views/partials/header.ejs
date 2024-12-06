@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar br-0 nav bg-green">
+            <div class="container-fluid h-70">
+                <div class="navbar-header">
+                    <a class="navbar-brand d-if h-74" href="/">
+                        <img src="/../images/main_logo.png" alt="" width="100" height="85"
+                            class="mt-8 d-inline-block align-text-top">
+                    </a>
+                </div>
+                <ul class="nav navbar-nav navbar-right mt-14">
+                    <%if(!user) {%>
+                        <li><a class="button" name="login" href="/users/login">Login</a></li>
+                        <li><a class="button" href="/users/new">SignUp</a></li>
+                        <%} else {%>
+                            <li><a class="button" name="menu" href="/reviews/new">New Review </a></li>
+                            <li><a class="button" name="menu" href="/users/profile">My profile </a></li>
+                            <li><a class="button" href="/users/logout">Logout</a></li>
+                            <%}%>
+                </ul>
+            </div>
+            <hr class="mt-mb">
+            <div class="container-fluid bg-green">
+                <p class="f-changes"><a href="/reviews">Movies</a></p>
+            </div>
+        </nav>
+    </header>
+            <% if(errorMessages.length> 0) {%>
+                <% errorMessages.forEach(message=>{%>
+                    <div class='error'>
+                        <%=message%>
+                    </div>
+                    <%});%>
+                        <%}%>
+        
+                            <% if(successMessages.length> 0) {%>
+        
+                                <% successMessages.forEach(message=>{%>
+                                    <div class='success'>
+                                        <%=message%>
+                                    </div>
+                                    <%});%>
+                                        <%}%>
+            
+            
+       

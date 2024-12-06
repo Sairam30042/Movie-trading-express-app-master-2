@@ -1,0 +1,58 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container-fluid h-75">
+        <div class="row">
+            <form method="POST" action="/reviews/<%= review.id%>?_method=PUT">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <div id="content">
+                        <div id="india">
+                            <div>
+                                <div>
+                                    <img src="/../images/lord-of-the-flies-alternative-movie-poster-movie-poster-boy.jpeg"
+                                        width="200px" height="250px">
+                                    <span class="fl">
+                                        <h4><label for="movie_name" class="old-ch">Movie Name</label>:</h4>
+                                        &nbsp;&nbsp;<span class="mt-11"><input type="text" id="movie_name"
+                                                name="movie_name" value="<%= review.movie_name%>" required maxlength="20"></span>
+                                    </span>
+                                    <span class="fl">
+                                        <h4><label for="genre" class="old-ch">Genre</label>:</h4>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                            class="mt-11"><input type="text" id="genre" name="genre"
+                                                value="<%= review.genre%>" required></span>
+                                    </span>
+                                    <span class="fl">
+                                        <h4><label for="release" class="old-ch">Release</label>:</h4>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                            class="mt-11"><input type="text" id="release" name="release"
+                                                placeholder="old/new" value="<%= review.release%>" required ></span>
+                                    </span>
+                                    <span class="fl">
+                                        <h4 class="old-ch">Posted on:</h4>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mt-11">
+                                            <%= review.createdAt%>
+                                        </span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <h2><label class="old-ch" for="review">Review</label></h2>
+                        <p id="hpad">
+                            <textarea rows="5" id="review" name="review" class="w-700" required maxlength="300"><%= review.review%></textarea>
+                        </p>
+                        <button class="btn btn-submit ml-10">Submit</button>
+                    </div>
+                    <div class="row">
+                        <img src="/../images/edit.png" class="ml-350" alt="" width="400" height="400">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

@@ -1,0 +1,35 @@
+
+    <%- include('../partials/header.ejs')%>
+    <div class="container-fluid h-75">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4 pt-50">
+                <div id="content">
+                    <div>
+                        <form action = '/users/login' method = 'POST'>
+                            
+                            <span class="fl ml-70">
+                                <h4><label for="email" class="old-ch">Email</label>:</h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                class="mt-11"><input type="email" id="email" name="email"
+                                    placeholder="Email" required></span>
+                            </span>
+                            <span class="fl ml-70">
+                                <h4><label for="password" class="old-ch">Password</label>:</h4> &nbsp;&nbsp;<span
+                                class="mt-11"><input type="password" id="password" name="password"
+                                    placeholder="password" required minlength="8" maxlength = "64"></span>
+                            </span>
+                            <br>
+                            <br>
+                            <button class="btn btn-success">Login</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="/../images/new.png" alt="" width="400" height="400">
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>
